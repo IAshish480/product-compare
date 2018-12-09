@@ -1,0 +1,74 @@
+<mat-toolbar style="min-height: 45px;" color="primary">
+    <mat-toolbar-row style="height: 45px;">
+        <span>Product Comparision</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div *ngIf="originalObject" style="padding: 0.5rem 1rem 0.5rem 1rem;margin-top: 20px;width: 96%;">
+    <div *ngIf="selectedProducts.length>0">
+        <div *ngFor="let arr of selectedProducts;let ind=index;" style="width: 30%;float: left;margin-left: 3%;">
+            <div class="imgPanel">
+                <button *ngIf="ind>0" style="background: none;border: none;float: right;">
+                    <span *ngIf="arr['image']" class="cl" (click)="removeThisProduct(arr,ind)">X</span>
+                </button>
+                <img *ngIf="arr['image']&& ind>0" src="{{arr['image']}}">
+            </div>
+            <div class="titlePanel">
+                <div *ngIf="ind==0">
+                    <input type="checkbox" [disabled]="removedProduct" (change)="checkBoxClicked()" style="vertical-align: bottom;">Show
+                    Only
+                    Differences
+                </div>
+                <div *ngIf="arr['productPricing']&&arr['productPricing']['finalPrice']&& ind>0">
+                    <span style="width: 100%;display: block;font-size: 12px;height: 32px;">
+                        {{arr['title']&&arr['title']['title']?arr['title']['title']:''}}
+                    </span>
+                    <span style="font-size: 15px;font-family: serif;">
+                        <span style="font-weight: 600;">
+                            {{arr['productPricing']&&arr['productPricing']['finalPrice']?'₹'+arr['productPricing']['finalPrice']:''}}
+                        </span>
+                        <span style="font-size: 13px;margin-left: 8px;color: grey;">
+                            <s>
+                                {{arr['productPricing']&&arr['productPricing']['price']?'₹'+arr['productPricing']['price']:''}}
+                            </s>
+                        </span>
+                        <span style="font-size: 13px;margin-left: 8px;color:green;">
+                            {{arr['productPricing']&&arr['productPricing']['totalDiscount']?arr['productPricing']['totalDiscount']+"%
+                            off":''}}
+                        </span>
+                    </span>
+                </div>
+                <select *ngIf="!(arr['productPricing'])&& ind>0" (change)="addThisProduct(ind,$event.target.value)">
+                    <option disabled>Add this Product</option>
+                    <option *ngFor="let select of productListLeft;let in=index;" value="{{select['prodId']}}">{{select['title']['title']}}</option>
+                </select>
+            </div>
+            <div *ngIf="ind>0">
+                <div *ngFor="let fetur of arr['featureList']">
+                    <div>
+                        <div class="header" *ngIf="fetur && fetur['featureDetails'].length>0">
+                        </div>
+                        <div *ngFor="let data of fetur['featureDetails']">
+                            <div class="subFeature">
+                                {{data && data['value']?data['value']:''}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="ind==0">
+                <div *ngFor="let fetur of selectedProducts[0]['featureList']">
+                    <div>
+                        <div class="header" style="width:320%;" *ngIf="fetur && fetur['featureDetails'].length>0">
+                            {{fetur['featureName']?fetur['featureName']:''}}
+                        </div>
+                        <div *ngFor="let data of fetur['featureDetails']">
+                            <div class="subFeature">
+                                {{data && data['featureName']?data['featureName']:''}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+  .myToolbarButton {
+      background: #3f51b5;
+      border: none;
+      color: white;
+  }
+  mat-toolbar mat-toolbar-row span{
+    font-size: 20px;
+    font-family: Times;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+}
+  
+  .header {
+      height: 22px !important;
+      padding: 8px;
+      font-size: 16px;
+      background: bisque;
+      font-weight: 600;
+      text-transform: uppercase;
+  }
+
+  .imgPanel {
+      height: 150px;
+  }
+
+  .titlePanel {
+      height: 50px;
+  }
+
+  .subFeature {
+      height: 14px !important;
+      padding: 8px 20px;
+      font-size: 14px;
+      font-family: serif;
+  }
+
+  img {
+      height: 140px;
+      width: 100%;
+  }
+
+  .cl {
+      color: #fff;
+      cursor: pointer;
+      height: 16px;
+      margin: -10px;
+      padding: 3px;
+      border-radius: 100%;
+      background: #666;
+      font-size: 12px;
+      text-align: center;
+      width: 16px;
+      float: right;
+      position: absolute;
+  }
+
+  span {
+      height: 32px;
+  }
+
+  select {
+      width: 80%;
+      border-radius: 10px;
+      padding: 0 10%;
+      margin: 0 15%;
+      font-size: 14px;
+      border: none !important;
+      line-height: 20px;
+      background: bisque;
+      height: 25px;
+  }
+
+  option {
+      font-size: 14px;
+      font-weight: 600;
+      font-family: serif;
+      background: ghostwhite;
+  }
